@@ -23,7 +23,6 @@ amenity = []
 with webdriver.Chrome() as driver:
     driver.maximize_window()
     # Open URL
-    # driver.get("https://www.coworker.com/search/portugal/lisbon")
     driver.get("https://www.coworker.com/search/saudi-arabia/al-khobar")
     sleep(20)
 
@@ -59,9 +58,7 @@ with webdriver.Chrome() as driver:
                 print("here")
                 sleep(10)
                 html = driver.page_source
-                # print(html.encode("utf-8"))
                 soup = BeautifulSoup(html, "html.parser")
-                # soup.encode("utf-8")
 
                 # Name
                 try:
@@ -226,10 +223,9 @@ with webdriver.Chrome() as driver:
                         "div", class_="space-full-description-inner")
                 # Encoding required from print
                     description.append(descs.text.strip("\n").strip(" ").replace(
-                        "\n", " ").replace("  ", " "))  # .encode("utf-8"))
+                        "\n", " ").replace("  ", " "))  
                 except AttributeError:
                     description.append("")
-                # print(description)
 
                 # Address
                 try:
@@ -241,7 +237,6 @@ with webdriver.Chrome() as driver:
                         "View on\nMap", "").strip(" "))
                 except AttributeError:
                     address.append("")
-                # print(address)
 
                 # Rates
                 rates = soup.find_all(
